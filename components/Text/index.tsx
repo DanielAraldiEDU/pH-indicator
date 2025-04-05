@@ -2,12 +2,14 @@ import { memo } from 'react';
 import { Text as RNText } from 'react-native';
 
 import { TextProps } from '@/@types';
-import { styles } from './styles';
+import { makeStyles } from './styles';
 
 function Text(props: TextProps) {
-  const { variant = 'body', style, ...rest } = props;
+  const { variant = 'body', color = 'secondary', style, ...rest } = props;
 
-  return <RNText {...rest} style={[styles[variant], style]} />;
+  const textStyles = makeStyles({ color })[variant];
+
+  return <RNText {...rest} style={[textStyles, style]} />;
 }
 
 export default memo(Text);
