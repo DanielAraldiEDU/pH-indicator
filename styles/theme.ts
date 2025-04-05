@@ -31,6 +31,8 @@ export const theme = {
       13: '#B6E738',
       14: '#F5E33B',
     },
+
+    transparent: 'transparent',
   },
 
   fonts: {
@@ -70,5 +72,6 @@ export const theme = {
     4: 16,
     '4.5': 18,
     5: 20,
+    10: 40,
   },
 } as const;
