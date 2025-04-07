@@ -12,8 +12,6 @@ export const makeStyles = () =>
       alignItems: "center",
     },
     logoWrapper: {
-      width: 80,
-      height: 80,
       justifyContent: "center",
       alignItems: "center",
     },
