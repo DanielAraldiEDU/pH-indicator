@@ -1,9 +1,10 @@
 import React, { memo } from "react";
 import { View } from "react-native";
 
-import Text from "@/components/Text"; // assuming this is your shared custom Text component
+import Text from "@/components/Text";
 import { makeStyles } from "./styles";
-import Logo from "../Icon/logo";
+import { Image } from "react-native";
+import logo from "@/assets/images/logo.png";
 
 function SplashScreen() {
   const styles = makeStyles();
@@ -11,7 +12,7 @@ function SplashScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.logoWrapper}>
-        <Logo />
+        <Image source={logo} style={styles.logoWrapper} />
       </View>
       <Text variant="heading" color="primary" style={styles.text}>
         Repolho Roxo
