@@ -7,12 +7,21 @@ import {
 } from "phosphor-react-native";
 
 import { IconName, IconProps } from "@/@types";
+import { theme } from "@/styles";
 
 function Icon(props: IconProps) {
   const { name, color = "secondary", weight = "regular" } = props;
 
+  const resolveColor = () => {
+    const themeColor = theme.colors?.[color as keyof typeof theme.colors];
+    if (typeof themeColor === "string") return themeColor;
+    if (typeof themeColor === "object" && "main" in themeColor)
+      return themeColor.main;
+    return color;
+  };
+
   const commonIconProps: PRNIconProps = {
-    color,
+    color: resolveColor(),
     size: 16,
     weight,
   };
