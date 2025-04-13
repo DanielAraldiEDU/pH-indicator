@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   header: {
-    paddingVertical: theme.spacings[10],
+    paddingTop: theme.spacings[10],
     paddingHorizontal: theme.spacings[5],
     alignItems: "center",
     justifyContent: "center",
