@@ -9,7 +9,7 @@ import {
 import { IconName, IconProps } from "@/@types";
 
 function Icon(props: IconProps) {
-  const { name, color = "secondary", weight } = props;
+  const { name, color = "secondary", weight = "regular" } = props;
 
   const commonIconProps: PRNIconProps = {
     color,
