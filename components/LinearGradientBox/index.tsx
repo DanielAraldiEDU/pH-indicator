@@ -1,9 +1,9 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { memo } from 'react';
 import { View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
-import { theme } from '@/styles';
 import { LinearGradientColorsType } from '@/@types';
+import { theme } from '@/styles';
 import { styles } from './styles';
 
 function LinearGradientBox() {
