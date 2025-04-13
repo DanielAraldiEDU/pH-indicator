@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { Pressable } from 'react-native';
 
-import { styles } from './styles';
 import { PhButtonProps, PhVariant } from '@/@types';
 import Text from '../Text';
+import { styles } from './styles';
 
 function PhButton(props: PhButtonProps) {
   const { variant, onPress } = props;
