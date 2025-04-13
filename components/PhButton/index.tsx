@@ -16,7 +16,7 @@ function PhButton(props: PhButtonProps) {
 
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Text variant='heading' color='primary'>
+      <Text style={styles.content} variant='heading' color='primary' >
         {texts[variant]}
       </Text>
     </Pressable>

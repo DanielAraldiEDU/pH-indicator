@@ -17,4 +17,7 @@ export const styles = StyleSheet.create({
 
     backgroundColor: colors.transparent.main,
   },
+  content: {
+    lineHeight: theme.spacings[10]
+  }
 });
