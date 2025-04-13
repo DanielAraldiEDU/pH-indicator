@@ -7,22 +7,33 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function Home() {
-  return <ScrollView style={styles.container}>
-    <Header />
-    <Divider variant='header'/>
-    <View style={{ flexDirection: 'row', height: 700, gap: 6 }}>
-      <View style={{ width: '15%', justifyContent: 'space-between' }}>
-        <PhButton variant='0' />
-        <PhButton variant='7' />
-        <PhButton variant='14' />
+  return (
+    <ScrollView style={styles.container}>
+      <Header />
+      <Divider variant='header'/>
+      <View style={styles.content}>
+        <View style={styles.phButtonsContainer}>
+          <View style={styles.phButton}>
+            <PhButton variant='0' />
+            <View style={styles.phButtonLine} />
+          </View>
+          <View style={styles.phButton}>
+            <PhButton variant='7' />
+            <View style={styles.phButtonLine} />
+          </View>
+          <View style={styles.phButton}>
+            <PhButton variant='14' />
+            <View style={styles.phButtonLine} />
+          </View>
+        </View>
+        <View style={styles.linearGradientContainer}>
+          <LinearGradientBox />
+        </View>
       </View>
-      <View style={{ flexGrow: 1 }}>
-        <LinearGradientBox />
-      </View>
-    </View>
-    <Divider variant='footer'/>
-    <Footer />
-  </ScrollView>;
+      <Divider variant='footer'/>
+      <Footer />
+  </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -32,5 +43,32 @@ const styles = StyleSheet.create({
     width: '100%',
 
     padding: theme.spacings[5],
+  },
+  
+  content: {
+    flexDirection: 'row',
+    height: 576, // TODO: change height approach
+    gap: theme.spacings['1.5']
+  },
+
+  phButtonsContainer: {
+    width: theme.spacings[14],
+    justifyContent: 'space-between',
+  },
+  
+  phButton: {
+    flexDirection: 'row',
+    gap: theme.spacings['1.5'],
+    alignItems: 'center',
+  },
+
+  phButtonLine: {
+    width: theme.spacings[2],
+    height: 1,
+    backgroundColor: theme.colors.primary.main,
+  },
+
+  linearGradientContainer: {
+    flexGrow: 1,
   },
 });

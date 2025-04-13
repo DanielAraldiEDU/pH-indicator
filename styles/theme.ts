@@ -77,5 +77,6 @@ export const theme = {
     '4.5': 18,
     5: 20,
     10: 40,
+    14: 56,
   },
 } as const;
