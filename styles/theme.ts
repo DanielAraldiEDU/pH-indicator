@@ -32,7 +32,9 @@ export const theme = {
       14: '#F5E33B',
     },
 
-    transparent: 'transparent',
+    transparent: {
+      main: 'transparent',
+    },
   },
 
   fonts: {

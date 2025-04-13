@@ -15,6 +15,6 @@ export const styles = StyleSheet.create({
     borderWidth: borders.widths.small,
     borderRadius: borders.radius.full,
 
-    backgroundColor: colors.transparent,
+    backgroundColor: colors.transparent.main,
   },
 });

@@ -26,8 +26,8 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar
-        style='light'
-        backgroundColor={colors.primary.main}
+        style='dark'
+        backgroundColor={colors.background.main}
         translucent
         networkActivityIndicatorVisible
       />
