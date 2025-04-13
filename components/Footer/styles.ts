@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   content: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: theme.fonts.sizes.body,
+    fontSize: theme.fonts.sizes.text,
     fontFamily: theme.fonts.families.rowdies.regular,
     color: theme.colors.secondary.main,
     marginBottom: 4,

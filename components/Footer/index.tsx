@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { View, Text } from "react-native";
 import { styles } from "./styles";
 import Icon from "@/components/Icon";
@@ -17,4 +17,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default memo(Footer);
