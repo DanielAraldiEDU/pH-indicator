@@ -23,6 +23,17 @@ export const theme = {
       14: '#F5E33B',
     },
 
+    pHStops: {
+      1: 0.05,
+      3: 0.27,
+      5: 0.38,
+      7: 0.50,
+      9: 0.61,
+      11: 0.72,
+      13: 0.83,
+      14: 0.95,
+    },
+
     transparent: {
       main: 'transparent',
     },
