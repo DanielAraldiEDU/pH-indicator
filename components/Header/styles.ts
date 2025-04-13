@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   logo: {
     width: 50,
     height: 50,
-    marginRight: theme.spacings[4],
+    marginRight: theme.spacings[2],
   },
   title: {
     fontSize: theme.fonts.sizes.heading,
