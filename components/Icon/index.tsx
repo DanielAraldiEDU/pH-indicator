@@ -1,19 +1,20 @@
-import { memo, ReactNode } from 'react';
+import { memo, ReactNode } from "react";
 import {
   Copyright,
   Flask,
   Heart,
   IconProps as PRNIconProps,
-} from 'phosphor-react-native';
+} from "phosphor-react-native";
 
-import { IconName, IconProps } from '@/@types';
+import { IconName, IconProps } from "@/@types";
 
 function Icon(props: IconProps) {
-  const { name, color = 'secondary' } = props;
+  const { name, color = "secondary", weight } = props;
 
   const commonIconProps: PRNIconProps = {
     color,
     size: 16,
+    weight,
   };
 
   const icons: Record<IconName, ReactNode> = {
