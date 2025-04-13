@@ -2,9 +2,6 @@ export const theme = {
   colors: {
     primary: {
       main: '#A855F7',
-      opacity: {
-        25: 'rgba(168, 85, 247, 0.25)',
-      },
     },
 
     secondary: {

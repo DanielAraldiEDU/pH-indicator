@@ -1,5 +1,6 @@
-import { theme } from '@/styles';
 import { StyleSheet, View } from 'react-native';
+
+import { theme } from '@/styles';
 
 export default function Home() {
   return <View style={styles.container}></View>;

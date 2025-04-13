@@ -1,5 +1,6 @@
 import Icon from './Icon';
+import LinearGradientBox from './LinearGradientBox';
 import PhButton from './PhButton';
 import Text from './Text';
 
-export { PhButton, Text, Icon };
+export { Icon, LinearGradientBox, PhButton, Text };
