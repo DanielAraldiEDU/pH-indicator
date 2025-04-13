@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  icon: {
+  logo: {
     width: 60,
     height: 60,
     marginRight: theme.spacings[4],
