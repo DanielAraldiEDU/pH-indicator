@@ -1,6 +1,6 @@
-export type IconName = "heart" | "copyright" | "flask";
-export type IconColor = "primary" | "secondary";
-export type IconWeight = "thin" | "light" | "regular" | "bold" | "fill";
+export type IconName = 'heart' | 'copyright' | 'flask';
+export type IconColor = 'primary' | 'secondary';
+export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill';
 
 export interface IconProps {
   /**

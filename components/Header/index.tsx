@@ -1,18 +1,23 @@
-import { memo } from "react";
-import { View, Text, Image } from "react-native";
+import { memo } from 'react';
+import { View, Image } from 'react-native';
 
-import { styles } from "./styles";
-import images from "@/config/images";
+import { LOGO } from '@/config';
+import Text from '../Text';
+import { styles } from './styles';
 
 function Header() {
   return (
     <View style={styles.header}>
       <View style={styles.titleRow}>
-        <Image source={images.logo} style={styles.logo} resizeMode="contain" />
-        <Text style={styles.title}>Indicador de pH</Text>
+        <Image source={LOGO} style={styles.image} resizeMode='contain' />
+
+        <Text variant='heading' color='primary' style={styles.text}>
+          Indicador de pH
+        </Text>
       </View>
-      <Text style={styles.subtitle}>
-        Clique na paleta de cores do pH {"\n"}e descubra seu nível! 🎨💧
+
+      <Text style={styles.text}>
+        Clique na paleta de cores do pH {'\n'}e descubra seu nível! 🎨💧
       </Text>
     </View>
   );

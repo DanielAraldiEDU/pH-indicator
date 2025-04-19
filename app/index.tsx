@@ -1,74 +1,84 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { theme } from '@/styles';
-import { LinearGradientBox, PhButton } from '../components';
-import Divider from '../components/Divider';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import {
+  LinearGradientBox,
+  PhButton,
+  Divider,
+  Footer,
+  Header,
+  PhButtonLine,
+} from '../components';
 
 export default function Home() {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Header />
-      <Divider variant='header'/>
+
+      <Divider variant='header' />
+
       <View style={styles.content}>
         <View style={styles.phButtonsContainer}>
-          <View style={styles.phButton}>
+          <View style={styles.phButtonContent}>
             <PhButton variant='0' />
-            <View style={styles.phButtonLine} />
+
+            <PhButtonLine />
           </View>
-          <View style={styles.phButton}>
+
+          <View style={styles.phButtonContent}>
             <PhButton variant='7' />
-            <View style={styles.phButtonLine} />
+
+            <PhButtonLine />
           </View>
-          <View style={styles.phButton}>
+
+          <View style={styles.phButtonContent}>
             <PhButton variant='14' />
-            <View style={styles.phButtonLine} />
+
+            <PhButtonLine />
           </View>
         </View>
-        <View style={styles.linearGradientContainer}>
-          <LinearGradientBox />
-        </View>
+
+        <LinearGradientBox />
       </View>
-      <Divider variant='footer'/>
+
+      <Divider variant='footer' />
+
       <Footer />
-  </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-
     width: '100%',
+    height: '100%',
 
     padding: theme.spacings[5],
+
+    backgroundColor: theme.colors.background.main,
   },
-  
+
   content: {
+    flex: 1,
+
     flexDirection: 'row',
-    height: 576, // TODO: change height approach
-    gap: theme.spacings['1.5']
+
+    height: '100%',
+
+    gap: theme.spacings['1.5'],
   },
 
   phButtonsContainer: {
     width: theme.spacings[14],
+
     justifyContent: 'space-between',
   },
-  
-  phButton: {
+
+  phButtonContent: {
     flexDirection: 'row',
-    gap: theme.spacings['1.5'],
+
     alignItems: 'center',
-  },
 
-  phButtonLine: {
-    width: theme.spacings[2],
-    height: 1,
-    backgroundColor: theme.colors.primary.main,
-  },
-
-  linearGradientContainer: {
-    flexGrow: 1,
+    gap: theme.spacings['1.5'],
   },
 });
