@@ -12,7 +12,9 @@ export const styles = StyleSheet.create({
   },
 
   text: {
-    fontWeight: 'bold',
+    width: '100%',
+
+    paddingHorizontal: theme.spacings[5],
 
     textAlign: 'center',
   },

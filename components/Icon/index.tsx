@@ -10,7 +10,12 @@ import { IconName, IconProps } from '@/@types';
 import { theme } from '@/styles';
 
 function Icon(props: IconProps) {
-  const { name, color = 'secondary', weight = 'regular' } = props;
+  const {
+    name,
+    color = 'secondary',
+    weight = 'regular',
+    size = 'regular',
+  } = props;
 
   const resolveColor = () => {
     const themeColor = theme.colors?.[color as keyof typeof theme.colors];
@@ -22,7 +27,7 @@ function Icon(props: IconProps) {
 
   const commonIconProps: PRNIconProps = {
     color: resolveColor(),
-    size: 16,
+    size: theme.spacings[size === 'regular' ? 4 : '2.5'],
     weight,
   };
 

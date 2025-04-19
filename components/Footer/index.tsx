@@ -10,12 +10,12 @@ function Footer() {
   return (
     <View style={styles.container}>
       <Text variant='text' style={styles.text}>
-        Aplicativo desenvolvido pela Escola Politécnica - {'\n'}
-        UNIVALI <Icon name='heart' weight='fill' />
+        Aplicativo desenvolvido pela Escola Politécnica - UNIVALI{' '}
+        <Icon name='heart' weight='fill' size='thin' />
       </Text>
 
       <Text variant='text' style={styles.text}>
-        Versão {version} - 2025 <Icon name='copyright' />
+        Versão {version} - 2025 <Icon name='copyright' size='thin' />
       </Text>
     </View>
   );

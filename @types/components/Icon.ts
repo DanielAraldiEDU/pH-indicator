@@ -1,6 +1,7 @@
 export type IconName = 'heart' | 'copyright' | 'flask';
 export type IconColor = 'primary' | 'secondary';
 export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill';
+export type IconSize = 'thin' | 'regular';
 
 export interface IconProps {
   /**
@@ -21,4 +22,11 @@ export interface IconProps {
    * @default 'regular'
    */
   weight?: IconWeight;
+
+  /**
+   * @description Provides icon size.
+   *
+   * @default 'regular'
+   */
+  size?: IconSize;
 }
