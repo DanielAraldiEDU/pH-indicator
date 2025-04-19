@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
 
     paddingHorizontal: theme.spacings[5],
 
-    gap: theme.spacings[2],
+    gap: theme.spacings[3],
   },
 
   titleRow: {

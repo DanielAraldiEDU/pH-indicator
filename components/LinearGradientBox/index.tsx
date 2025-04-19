@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { memo } from 'react';
-import { View } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
 
 import {
   LinearGradientBoxProps,
@@ -11,15 +11,24 @@ import { theme } from '@/styles';
 import { styles } from './styles';
 
 function LinearGradientBox(props: LinearGradientBoxProps) {
-  const { onLayout } = props;
+  const { onTouch } = props;
 
   const colors = Object.values(theme.colors.pH) as LinearGradientColorsType;
   const locations = Object.values(
     theme.colors.pHStops
   ) as LinearGradientLocationsType;
 
+  function onTouchStart(event: GestureResponderEvent): void {
+    const { locationX, locationY } = event.nativeEvent;
+
+    onTouch?.({
+      locationX,
+      locationY,
+    });
+  }
+
   return (
-    <View style={styles.container} onLayout={onLayout}>
+    <View style={styles.container} onTouchStart={onTouchStart}>
       <LinearGradient
         colors={colors}
         locations={locations}
