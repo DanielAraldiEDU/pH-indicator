@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
 
-    paddingTop: theme.spacings[10],
     paddingHorizontal: theme.spacings[5],
 
     gap: theme.spacings[2],
