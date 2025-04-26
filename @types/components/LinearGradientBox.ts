@@ -8,6 +8,13 @@ export interface LinearGradientBoxProps {
    * @default null
    */
   phLevel: number | null;
+
+  /**
+   * @description Provides callback function to make actions on press pH level.
+   *
+   * @default undefined
+   */
+  onPressPhLevel?: () => void;
 }
 
 export interface LinearGradientBoxLocationProps {

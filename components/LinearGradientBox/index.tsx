@@ -16,7 +16,7 @@ import Tooltip from '../Tooltip';
 import { styles } from './styles';
 
 function LinearGradientBox(props: LinearGradientBoxProps) {
-  const { phLevel: forcePhLevel = null } = props;
+  const { phLevel: forcePhLevel = null, onPressPhLevel } = props;
 
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const [pHLevel, setPhLevel] = useState<number>(0);
@@ -66,8 +66,11 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
         locationY: locationsY[forcePhLevel] || linearGradientBoxSize.height / 2,
       });
       setIsTooltipVisible(true);
+      onPressPhLevel?.();
     }
   }, [forcePhLevel]);
+
+  console.log(forcePhLevel);
 
   return (
     <View

@@ -41,7 +41,10 @@ export default function Home() {
           </View>
         </View>
 
-        <LinearGradientBox phLevel={forcePhLevel} />
+        <LinearGradientBox
+          phLevel={forcePhLevel}
+          onPressPhLevel={() => setForcePhLevel(null)}
+        />
       </View>
 
       <Divider variant='footer' />
@@ -62,8 +65,9 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    flex: 1,
+    position: 'relative',
 
+    flex: 1,
     flexDirection: 'row',
 
     height: '100%',

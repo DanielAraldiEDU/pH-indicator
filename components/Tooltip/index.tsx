@@ -45,6 +45,9 @@ function Tooltip(props: TooltipProps) {
 
   return (
     <View
+      accessible={false}
+      focusable={false}
+      pointerEvents='none'
       style={[
         styles.container,
         { transform: [{ translateX }, { translateY }] },
