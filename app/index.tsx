@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { LinearGradientBoxOnTouchProps } from '@/@types';
 import { theme } from '@/styles';
 import {
   LinearGradientBox,
@@ -13,9 +11,6 @@ import {
 } from '../components';
 
 export default function Home() {
-  const [tooltipPosition, setTooltipPosition] =
-    useState<LinearGradientBoxOnTouchProps | null>(null);
-
   return (
     <View style={styles.container}>
       <Header />
@@ -43,7 +38,7 @@ export default function Home() {
           </View>
         </View>
 
-        <LinearGradientBox onTouch={setTooltipPosition} />
+        <LinearGradientBox />
       </View>
 
       <Divider variant='footer' />
