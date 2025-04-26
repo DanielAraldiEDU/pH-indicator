@@ -79,6 +79,7 @@ export const theme = {
     10: 40,
     13: 52,
     14: 56,
+    16: 64,
   },
 
   shadow: {
