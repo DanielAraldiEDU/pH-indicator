@@ -16,15 +16,22 @@ function Tooltip(props: TooltipProps) {
     height: 0,
   });
 
-  const translateX = locationX - tooltipLayout.width / 2;
-  const translateY = locationY - (tooltipLayout.height + theme.spacings['1.5']);
-
   function onLayout(event: LayoutChangeEvent): void {
     setTooltipLayout(event.nativeEvent.layout);
   }
 
+  const translates = useMemo(() => {
+    const translateX = locationX - tooltipLayout.width / 2;
+    const translateY =
+      locationY - (tooltipLayout.height + theme.spacings['1.5']);
+
+    return {
+      transform: [{ translateX }, { translateY }],
+    };
+  }, [locationX, locationY, tooltipLayout]);
+
   const pHLabel = useMemo(() => {
-    const pHPrecision = pH < 1 ? 2 : 3;
+    const pHPrecision = pH < 10 ? 3 : 4;
     const pHValue = pH.toPrecision(pHPrecision);
 
     if (pH <= 1) return `pH ${pHValue} (Altamente ácido)`;
@@ -48,10 +55,7 @@ function Tooltip(props: TooltipProps) {
       accessible={false}
       focusable={false}
       pointerEvents='none'
-      style={[
-        styles.container,
-        { transform: [{ translateX }, { translateY }] },
-      ]}
+      style={[styles.container, { ...translates }]}
       onLayout={onLayout}
     >
       <View style={styles.content}>
