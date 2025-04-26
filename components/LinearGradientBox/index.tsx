@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { GestureResponderEvent, LayoutChangeEvent, View } from 'react-native';
 
 import { MAX_PH } from '@/config';
@@ -25,11 +25,6 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
   const [tooltipLocation, setTooltipLocation] =
     useState<LinearGradientBoxLocationProps>({ locationX: 0, locationY: 0 });
 
-  const colors = Object.values(theme.colors.pH) as LinearGradientColorsType;
-  const locations = Object.values(
-    theme.colors.pHStops
-  ) as LinearGradientLocationsType;
-
   function onTouchStart(event: GestureResponderEvent): void {
     const { locationX, locationY } = event.nativeEvent;
 
@@ -52,6 +47,15 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
     setLinearGradientBoxSize(event.nativeEvent.layout);
   }
 
+  const linearGradientProps = useMemo(() => {
+    const colors = Object.values(theme.colors.pH) as LinearGradientColorsType;
+    const locations = Object.values(
+      theme.colors.pHStops
+    ) as LinearGradientLocationsType;
+
+    return { colors, locations };
+  }, []);
+
   useEffect(() => {
     if (forcePhLevel !== null) {
       const locationsY: Record<number, number> = {
@@ -70,19 +74,13 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
     }
   }, [forcePhLevel]);
 
-  console.log(forcePhLevel);
-
   return (
     <View
       style={styles.container}
       onLayout={onLayout}
       onTouchStart={onTouchStart}
     >
-      <LinearGradient
-        colors={colors}
-        locations={locations}
-        style={styles.content}
-      />
+      <LinearGradient style={styles.content} {...linearGradientProps} />
 
       {isTooltipVisible && <Tooltip pH={pHLevel} {...tooltipLocation} />}
     </View>
