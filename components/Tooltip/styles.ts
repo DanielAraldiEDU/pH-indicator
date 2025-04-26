@@ -1,5 +1,6 @@
+import { StyleSheet, Platform } from 'react-native';
+
 import { theme } from '@/styles';
-import { StyleSheet } from 'react-native';
 
 interface MakeStylesProps {
   width: number;
@@ -7,6 +8,8 @@ interface MakeStylesProps {
 
 export const makeStyles = (props: MakeStylesProps) => {
   const { width } = props;
+
+  const isAndroid = Platform.OS === 'android';
 
   return StyleSheet.create({
     container: {
@@ -22,6 +25,18 @@ export const makeStyles = (props: MakeStylesProps) => {
       borderRadius: theme.borders.radius.small,
 
       backgroundColor: theme.colors.background.main,
+
+      ...(isAndroid && {
+        shadowColor: theme.colors.primary.main,
+        shadowOffset: {
+          width: theme.spacings[1],
+          height: theme.spacings[1],
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4.65,
+
+        elevation: theme.spacings[2],
+      }),
     },
 
     content: {
