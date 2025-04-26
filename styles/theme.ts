@@ -80,4 +80,18 @@ export const theme = {
     13: 52,
     14: 56,
   },
+
+  shadow: {
+    default: {
+      shadowColor: '#A855F7',
+      shadowOffset: {
+        width: 4,
+        height: 4,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4.65,
+
+      elevation: 8,
+    },
+  },
 } as const;

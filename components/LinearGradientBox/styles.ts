@@ -7,15 +7,7 @@ export const styles = StyleSheet.create({
 
     flex: 1,
 
-    shadowColor: theme.colors.primary.main,
-    shadowOffset: {
-      width: theme.spacings[1],
-      height: theme.spacings[1],
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4.65,
-
-    elevation: theme.spacings[2],
+    ...theme.shadow.default,
   },
 
   content: {
