@@ -6,6 +6,7 @@ import LinearGradientBox from './LinearGradientBox';
 import PhButton from './PhButton';
 import PhButtonLine from './PhButtonLine';
 import Text from './Text';
+import Tooltip from './Tooltip';
 
 export {
   Divider,
@@ -16,4 +17,5 @@ export {
   PhButton,
   PhButtonLine,
   Text,
+  Tooltip,
 };
