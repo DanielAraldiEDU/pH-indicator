@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { theme } from '@/styles';
@@ -11,6 +12,8 @@ import {
 } from '../components';
 
 export default function Home() {
+  const [forcePhLevel, setForcePhLevel] = useState<number | null>(null);
+
   return (
     <View style={styles.container}>
       <Header />
@@ -20,25 +23,25 @@ export default function Home() {
       <View style={styles.content}>
         <View style={styles.phButtonsContainer}>
           <View style={styles.phButtonContent}>
-            <PhButton variant='0' />
+            <PhButton variant='0' onPress={() => setForcePhLevel(0)} />
 
             <PhButtonLine />
           </View>
 
           <View style={styles.phButtonContent}>
-            <PhButton variant='7' />
+            <PhButton variant='7' onPress={() => setForcePhLevel(7)} />
 
             <PhButtonLine />
           </View>
 
           <View style={styles.phButtonContent}>
-            <PhButton variant='14' />
+            <PhButton variant='14' onPress={() => setForcePhLevel(14)} />
 
             <PhButtonLine />
           </View>
         </View>
 
-        <LinearGradientBox />
+        <LinearGradientBox phLevel={forcePhLevel} />
       </View>
 
       <Divider variant='footer' />

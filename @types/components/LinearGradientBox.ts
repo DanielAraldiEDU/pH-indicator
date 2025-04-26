@@ -1,6 +1,15 @@
 export type LinearGradientColorsType = [string, string, ...string[]];
 export type LinearGradientLocationsType = [number, number, ...number[]];
 
+export interface LinearGradientBoxProps {
+  /**
+   * @description Provides to force pH level in tooltip inside the `LinearGradientBox`.
+   *
+   * @default null
+   */
+  phLevel: number | null;
+}
+
 export interface LinearGradientBoxLocationProps {
   /**
    * @description Provides the location X of the touch event.

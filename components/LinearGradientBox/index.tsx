@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { GestureResponderEvent, LayoutChangeEvent, View } from 'react-native';
 
 import { MAX_PH } from '@/config';
@@ -8,13 +8,16 @@ import {
   LinearGradientBoxLocationProps,
   LinearGradientColorsType,
   LinearGradientLocationsType,
+  LinearGradientBoxProps,
 } from '@/@types';
 import { theme } from '@/styles';
 
 import Tooltip from '../Tooltip';
 import { styles } from './styles';
 
-function LinearGradientBox() {
+function LinearGradientBox(props: LinearGradientBoxProps) {
+  const { phLevel: forcePhLevel = null } = props;
+
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const [pHLevel, setPhLevel] = useState<number>(0);
   const [linearGradientBoxSize, setLinearGradientBoxSize] =
@@ -30,8 +33,12 @@ function LinearGradientBox() {
   function onTouchStart(event: GestureResponderEvent): void {
     const { locationX, locationY } = event.nativeEvent;
 
-    const referencePhValue = (linearGradientBoxSize.height * 100) / locationY;
-    const currentPhLevel = (MAX_PH * 100) / referencePhValue;
+    const referencePhValue = locationY
+      ? (linearGradientBoxSize.height * 100) / locationY
+      : 0;
+    const currentPhLevel = referencePhValue
+      ? (MAX_PH * 100) / referencePhValue
+      : 0;
 
     setPhLevel(currentPhLevel);
     setTooltipLocation({
@@ -44,6 +51,23 @@ function LinearGradientBox() {
   function onLayout(event: LayoutChangeEvent): void {
     setLinearGradientBoxSize(event.nativeEvent.layout);
   }
+
+  useEffect(() => {
+    if (forcePhLevel !== null) {
+      const locationsY: Record<number, number> = {
+        0: 0.001,
+        7: linearGradientBoxSize.height / 2,
+        14: linearGradientBoxSize.height,
+      };
+
+      setPhLevel(forcePhLevel);
+      setTooltipLocation({
+        locationX: linearGradientBoxSize.width / 2,
+        locationY: locationsY[forcePhLevel] || linearGradientBoxSize.height / 2,
+      });
+      setIsTooltipVisible(true);
+    }
+  }, [forcePhLevel]);
 
   return (
     <View
