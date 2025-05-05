@@ -72,11 +72,11 @@ const styles = StyleSheet.create({
 
     height: '100%',
 
-    gap: theme.spacings['1.5'],
+    gap: theme.spacings['2.5'],
   },
 
   phButtonsContainer: {
-    width: theme.spacings[14],
+    width: theme.spacings[16],
 
     justifyContent: 'space-between',
   },
@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
 
     alignItems: 'center',
 
-    gap: theme.spacings['1.5'],
+    gap: theme.spacings['2.5'],
   },
 });
