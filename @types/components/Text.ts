@@ -1,7 +1,7 @@
 import { TextProps as RNTextProps } from 'react-native';
 
 export type TextVariant = 'heading' | 'body' | 'text';
-export type TextColor = 'primary' | 'secondary';
+export type TextColor = 'primary' | 'secondary' | 'background';
 
 export interface TextProps extends RNTextProps {
   /**
