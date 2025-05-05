@@ -16,7 +16,7 @@ import Tooltip from '../Tooltip';
 import { styles } from './styles';
 
 function LinearGradientBox(props: LinearGradientBoxProps) {
-  const { phLevel: forcePhLevel = null, onPressPhLevel } = props;
+  const { phLevel: forcePhLevel = null, onPressPhLevel, onHeightMeasured } = props;
 
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const [pHLevel, setPhLevel] = useState<number>(0);
@@ -66,6 +66,7 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
 
   function onLayout(event: LayoutChangeEvent): void {
     setLinearGradientBoxSize(event.nativeEvent.layout);
+    onHeightMeasured?.(event.nativeEvent.layout.height);
   }
 
   const linearGradientProps = useMemo(() => {

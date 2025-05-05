@@ -15,6 +15,8 @@ export interface LinearGradientBoxProps {
    * @default undefined
    */
   onPressPhLevel?: () => void;
+
+  onHeightMeasured?: (height: number) => void;
 }
 
 export interface LinearGradientBoxLocationProps {
