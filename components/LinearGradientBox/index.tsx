@@ -27,12 +27,12 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
 
   function onTouchStart(event: GestureResponderEvent): void {
     const { locationX, locationY } = event.nativeEvent;
+    const { height: linearGradientBoxHeight } = linearGradientBoxSize;
 
-    const referencePhValue = locationY
-      ? (linearGradientBoxSize.height * 100) / locationY
-      : 0;
-    const currentPhLevel = referencePhValue
-      ? (MAX_PH * 100) / referencePhValue
+    const firstStop = linearGradientBoxHeight * 0.05;
+
+    const currentPhLevel = locationY
+      ? (locationY - firstStop) * (MAX_PH - 1) / (linearGradientBoxHeight * 0.9) + 1
       : 0;
 
     setPhLevel(currentPhLevel);
