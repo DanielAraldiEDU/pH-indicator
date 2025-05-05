@@ -81,14 +81,14 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
   useEffect(() => {
     if (forcePhLevel !== null) {
       const locationsY: Record<number, number> = {
-        1: linearGradientBoxSize.height * 0.05,
-        2: linearGradientBoxSize.height * 0.12,
-        5: linearGradientBoxSize.height * 0.33,
-        7: linearGradientBoxSize.height * 0.46,
-        9: linearGradientBoxSize.height * 0.6,
-        11: linearGradientBoxSize.height * 0.74,
-        13: linearGradientBoxSize.height * 0.88,
-        14: linearGradientBoxSize.height * 0.95,
+        1: linearGradientBoxSize.height * theme.colors.pHStops[1],
+        2: linearGradientBoxSize.height * theme.colors.pHStops[2],
+        5: linearGradientBoxSize.height * theme.colors.pHStops[5],
+        7: linearGradientBoxSize.height * theme.colors.pHStops[7],
+        9: linearGradientBoxSize.height * theme.colors.pHStops[9],
+        11: linearGradientBoxSize.height * theme.colors.pHStops[11],
+        13: linearGradientBoxSize.height * theme.colors.pHStops[13],
+        14: linearGradientBoxSize.height * theme.colors.pHStops[14],
       };
 
       setPhLevel(forcePhLevel);

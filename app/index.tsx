@@ -18,12 +18,12 @@ export default function Home() {
 
 
   const centerPhLevels = useMemo(() => [
-    { value: '2', top: linearGradientHeight * 0.12 - theme.spacings[4]}, 
-    { value: '5', top: linearGradientHeight * 0.33 - theme.spacings[4]}, 
-    { value: '7', top: linearGradientHeight * 0.46 - theme.spacings[4]}, 
-    { value: '9', top: linearGradientHeight * 0.6 - theme.spacings[4]}, 
-    { value: '11', top: linearGradientHeight * 0.74 - theme.spacings[4]},
-    { value: '13', top: linearGradientHeight * 0.88 - theme.spacings[4]},
+    { value: '2', top: linearGradientHeight * theme.colors.pHStops[2] - theme.spacings[4]}, 
+    { value: '5', top: linearGradientHeight * theme.colors.pHStops[5] - theme.spacings[4]}, 
+    { value: '7', top: linearGradientHeight * theme.colors.pHStops[7] - theme.spacings[4]}, 
+    { value: '9', top: linearGradientHeight * theme.colors.pHStops[9] - theme.spacings[4]}, 
+    { value: '11', top: linearGradientHeight * theme.colors.pHStops[11] - theme.spacings[4]},
+    { value: '13', top: linearGradientHeight * theme.colors.pHStops[13] - theme.spacings[4]},
   ] as const, [linearGradientHeight]);
 
   return (
