@@ -1,23 +1,16 @@
 import { theme } from '@/styles';
 import { StyleSheet } from 'react-native';
 
-const { borders, colors, spacings } = theme;
+const { borders, spacings } = theme;
 
 export const styles = StyleSheet.create({
   container: {
-    width: spacings[10],
-    height: spacings[10],
+    width: spacings[12],
+    height: spacings[8],
 
     justifyContent: 'center',
     alignItems: 'center',
 
-    borderColor: colors.primary.main,
-    borderWidth: borders.widths.small,
-    borderRadius: borders.radius.full,
-
-    backgroundColor: colors.transparent.main,
-  },
-  content: {
-    lineHeight: theme.spacings[10]
+    borderRadius: borders.radius.small,
   }
 });
