@@ -9,8 +9,13 @@ function PhButton(props: PhButtonProps) {
   const { variant, onPress } = props;
 
   const texts: Record<PhVariant, string> = {
-    '0': '0',
+    '1': '0 - 1',
+    '2': '2',
+    '5': '5',
     '7': '7',
+    '9': '9',
+    '11': '11',
+    '13': '13',
     '14': '14',
   };
 

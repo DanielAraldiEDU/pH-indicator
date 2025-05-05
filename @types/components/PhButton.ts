@@ -1,4 +1,4 @@
-export type PhVariant = '0' | '7' | '14';
+export type PhVariant = '1' | '2' | '5' | '7' | '9' | '11' | '13' | '14';
 
 export interface PhButtonProps {
   /**
