@@ -1,18 +1,30 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { theme } from '@/styles';
 import {
-  LinearGradientBox,
-  PhButton,
   Divider,
   Footer,
   Header,
+  LinearGradientBox,
+  PhButton,
   PhButtonLine,
 } from '../components';
 
 export default function Home() {
   const [forcePhLevel, setForcePhLevel] = useState<number | null>(null);
+
+  const [linearGradientHeight, setLinearGradientHeight] = useState<number>(0);
+
+
+  const centerPhLevels = useMemo(() => [
+    { value: '2', top: linearGradientHeight * 0.12 - theme.spacings[4]}, 
+    { value: '5', top: linearGradientHeight * 0.33 - theme.spacings[4]}, 
+    { value: '7', top: linearGradientHeight * 0.46 - theme.spacings[4]}, 
+    { value: '9', top: linearGradientHeight * 0.6 - theme.spacings[4]}, 
+    { value: '11', top: linearGradientHeight * 0.74 - theme.spacings[4]},
+    { value: '13', top: linearGradientHeight * 0.88 - theme.spacings[4]},
+  ] as const, [linearGradientHeight]);
 
   return (
     <View style={styles.container}>
@@ -22,19 +34,19 @@ export default function Home() {
 
       <View style={styles.content}>
         <View style={styles.phButtonsContainer}>
-          <View style={styles.phButtonContent}>
-            <PhButton variant='0' onPress={() => setForcePhLevel(0)} />
+          <View style={[styles.phButtonContent, { top: 0 }]}>
+            <PhButton variant='1' onPress={() => setForcePhLevel(1)} />
 
             <PhButtonLine />
           </View>
+          {centerPhLevels.map(({ value, top }) => (
+            <View key={value} style={[styles.phButtonContent, { top } ]}>
+              <PhButton variant={value} onPress={() => setForcePhLevel(Number(value))} />
 
-          <View style={styles.phButtonContent}>
-            <PhButton variant='7' onPress={() => setForcePhLevel(7)} />
-
-            <PhButtonLine />
-          </View>
-
-          <View style={styles.phButtonContent}>
+              <PhButtonLine />
+            </View>
+          ))}
+          <View style={[styles.phButtonContent, { bottom: 0 }]}>
             <PhButton variant='14' onPress={() => setForcePhLevel(14)} />
 
             <PhButtonLine />
@@ -44,6 +56,7 @@ export default function Home() {
         <LinearGradientBox
           phLevel={forcePhLevel}
           onPressPhLevel={() => setForcePhLevel(null)}
+          onHeightMeasured={setLinearGradientHeight}
         />
       </View>
 
@@ -78,10 +91,12 @@ const styles = StyleSheet.create({
   phButtonsContainer: {
     width: theme.spacings[16],
 
-    justifyContent: 'space-between',
+    position: 'relative',
   },
 
   phButtonContent: {
+    position: 'absolute',
+
     flexDirection: 'row',
 
     alignItems: 'center',
