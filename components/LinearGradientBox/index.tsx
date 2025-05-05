@@ -27,9 +27,30 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
 
   function onTouchStart(event: GestureResponderEvent): void {
     const { locationX, locationY } = event.nativeEvent;
+
     const { height: linearGradientBoxHeight } = linearGradientBoxSize;
 
     const firstStop = linearGradientBoxHeight * 0.05;
+    const lastStop = linearGradientBoxHeight * 0.95;
+
+    if (locationY <= firstStop) {
+        setTooltipLocation({
+            locationX,
+            locationY: firstStop,
+        });
+        setPhLevel(1);
+        setIsTooltipVisible(true);
+        return;
+    }
+    if (locationY >= lastStop) {
+        setTooltipLocation({
+            locationX,
+            locationY: lastStop,
+        });
+        setPhLevel(14);
+        setIsTooltipVisible(true);
+        return;
+    }
 
     const currentPhLevel = locationY
       ? (locationY - firstStop) * (MAX_PH - 1) / (linearGradientBoxHeight * 0.9) + 1
