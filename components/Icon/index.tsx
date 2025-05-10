@@ -1,10 +1,5 @@
 import { memo, ReactNode } from 'react';
-import {
-  Copyright,
-  Flask,
-  Heart,
-  IconProps as PRNIconProps,
-} from 'phosphor-react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import { IconName, IconProps } from '@/@types';
 import { theme } from '@/styles';
@@ -25,16 +20,16 @@ function Icon(props: IconProps) {
     return color;
   };
 
-  const commonIconProps: PRNIconProps = {
+  const commonIconProps = {
     color: resolveColor(),
     size: theme.spacings[size === 'regular' ? 4 : '2.5'],
     weight,
   };
 
   const icons: Record<IconName, ReactNode> = {
-    heart: <Heart {...commonIconProps} />,
-    copyright: <Copyright {...commonIconProps} />,
-    flask: <Flask {...commonIconProps} />,
+    heart: <FontAwesome name='heart' {...commonIconProps} />,
+    copyright: <FontAwesome name='copyright' {...commonIconProps} />,
+    flask: <FontAwesome name='flask' {...commonIconProps} />,
   };
 
   return icons[name];

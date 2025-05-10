@@ -35,7 +35,7 @@ export default function RootLayout() {
       />
 
       <SafeAreaView style={styles.container}>
-        <Stack screenOptions={{ headerShown: false }}>
+        <Stack initialRouteName='index' screenOptions={{ headerShown: false }}>
           <Stack.Screen name='index' />
           <Stack.Screen name='+not-found' />
         </Stack>
