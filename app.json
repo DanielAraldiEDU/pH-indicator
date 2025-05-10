@@ -30,7 +30,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#F3E8FF"
       },
-      "icon": "./assets/images/icon.png"
+      "icon": "./assets/images/icon.png",
+      "package": "com.br.univali.ph_indicator"
     },
     "web": {
       "bundler": "metro",
@@ -51,6 +52,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "07e7ac57-ebb5-41e2-adf9-3d3370dcaea9"
+      }
     }
   }
 }
