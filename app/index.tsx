@@ -16,15 +16,42 @@ export default function Home() {
 
   const [linearGradientHeight, setLinearGradientHeight] = useState<number>(0);
 
-
-  const centerPhLevels = useMemo(() => [
-    { value: '2', top: linearGradientHeight * theme.colors.pHStops[2] - theme.spacings[4]}, 
-    { value: '5', top: linearGradientHeight * theme.colors.pHStops[5] - theme.spacings[4]}, 
-    { value: '7', top: linearGradientHeight * theme.colors.pHStops[7] - theme.spacings[4]}, 
-    { value: '9', top: linearGradientHeight * theme.colors.pHStops[9] - theme.spacings[4]}, 
-    { value: '11', top: linearGradientHeight * theme.colors.pHStops[11] - theme.spacings[4]},
-    { value: '13', top: linearGradientHeight * theme.colors.pHStops[13] - theme.spacings[4]},
-  ] as const, [linearGradientHeight]);
+  const centerPhLevels = useMemo(
+    () =>
+      [
+        {
+          value: '2',
+          top:
+            linearGradientHeight * theme.colors.pHStops[2] - theme.spacings[4],
+        },
+        {
+          value: '5',
+          top:
+            linearGradientHeight * theme.colors.pHStops[5] - theme.spacings[4],
+        },
+        {
+          value: '7',
+          top:
+            linearGradientHeight * theme.colors.pHStops[7] - theme.spacings[4],
+        },
+        {
+          value: '9',
+          top:
+            linearGradientHeight * theme.colors.pHStops[9] - theme.spacings[4],
+        },
+        {
+          value: '11',
+          top:
+            linearGradientHeight * theme.colors.pHStops[11] - theme.spacings[4],
+        },
+        {
+          value: '13',
+          top:
+            linearGradientHeight * theme.colors.pHStops[13] - theme.spacings[4],
+        },
+      ] as const,
+    [linearGradientHeight]
+  );
 
   return (
     <View style={styles.container}>
@@ -40,8 +67,11 @@ export default function Home() {
             <PhButtonLine />
           </View>
           {centerPhLevels.map(({ value, top }) => (
-            <View key={value} style={[styles.phButtonContent, { top } ]}>
-              <PhButton variant={value} onPress={() => setForcePhLevel(Number(value))} />
+            <View key={value} style={[styles.phButtonContent, { top }]}>
+              <PhButton
+                variant={value}
+                onPress={() => setForcePhLevel(Number(value))}
+              />
 
               <PhButtonLine />
             </View>
