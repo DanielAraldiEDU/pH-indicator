@@ -17,7 +17,7 @@ function Header() {
       </View>
 
       <Text style={styles.text}>
-        Clique na paleta de cores do pH {'\n'}e descubra seu nível! 🎨💧
+        Clique na paleta de cores {'\n'}e descubra o pH da sua amostra! 🎨💧
       </Text>
     </View>
   );

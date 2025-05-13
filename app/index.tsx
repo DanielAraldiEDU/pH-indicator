@@ -66,6 +66,7 @@ export default function Home() {
 
             <PhButtonLine />
           </View>
+
           {centerPhLevels.map(({ value, top }) => (
             <View key={value} style={[styles.phButtonContent, { top }]}>
               <PhButton
@@ -76,6 +77,7 @@ export default function Home() {
               <PhButtonLine />
             </View>
           ))}
+
           <View style={[styles.phButtonContent, { bottom: 0 }]}>
             <PhButton variant='14' onPress={() => setForcePhLevel(14)} />
 
