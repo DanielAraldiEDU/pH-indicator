@@ -12,5 +12,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
 
     borderRadius: borders.radius.small,
-  }
+  },
 });

@@ -1,6 +1,7 @@
 import { memo } from 'react';
-import { Pressable } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
+import { ACTIVE_OPACITY } from '@/config';
 import { PhButtonProps, PhVariant } from '@/@types';
 import { theme } from '../../styles';
 import Text from '../Text';
@@ -22,12 +23,18 @@ function PhButton(props: PhButtonProps) {
     '14': '14',
   };
 
+  const isHighlightText = ['13', '14'].includes(variant);
+
   return (
-    <Pressable onPress={onPress} style={[styles.container, { backgroundColor: colors.pH[variant] } ]}>
-      <Text variant='body' color={['13', '14'].includes(variant) ? 'primary' : 'background'}>
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      onPress={onPress}
+      style={[styles.container, { backgroundColor: colors.pH[variant] }]}
+    >
+      <Text variant='body' color={isHighlightText ? 'primary' : 'background'}>
         {texts[variant]}
       </Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 
