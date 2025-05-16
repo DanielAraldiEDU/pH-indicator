@@ -1,4 +1,4 @@
-# Indicador pH
+# pH Indicator
 
 [![wakatime](https://wakatime.com/badge/user/920a7e43-2969-4212-82ff-1b375685ff58/project/d2ee8a3f-961f-4567-9c60-a5f562275a43.svg)](https://wakatime.com/badge/user/920a7e43-2969-4212-82ff-1b375685ff58/project/d2ee8a3f-961f-4567-9c60-a5f562275a43)
 
@@ -11,7 +11,7 @@ A simple App to indicate the pH of acid bases. 🧪
   - [Build APK (Android only)](#build-apk-android-only)
 - [Collaborators](#collaborators)
 
-## Execute:
+## Execute
 
 First, start the project using to follow command:
 
