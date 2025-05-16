@@ -13,7 +13,6 @@ import {
 
 export default function Home() {
   const [forcePhLevel, setForcePhLevel] = useState<number | null>(null);
-
   const [linearGradientHeight, setLinearGradientHeight] = useState<number>(0);
 
   const centerPhLevels = useMemo(
@@ -53,6 +52,21 @@ export default function Home() {
     [linearGradientHeight]
   );
 
+  const renderPhButtons = useMemo(
+    () =>
+      centerPhLevels.map(({ value, top }) => (
+        <View key={value} style={[styles.phButtonContent, { top }]}>
+          <PhButton
+            variant={value}
+            onPress={() => setForcePhLevel(Number.parseInt(value))}
+          />
+
+          <PhButtonLine />
+        </View>
+      )),
+    [centerPhLevels]
+  );
+
   return (
     <View style={styles.container}>
       <Header />
@@ -67,16 +81,7 @@ export default function Home() {
             <PhButtonLine />
           </View>
 
-          {centerPhLevels.map(({ value, top }) => (
-            <View key={value} style={[styles.phButtonContent, { top }]}>
-              <PhButton
-                variant={value}
-                onPress={() => setForcePhLevel(Number(value))}
-              />
-
-              <PhButtonLine />
-            </View>
-          ))}
+          {renderPhButtons}
 
           <View style={[styles.phButtonContent, { bottom: 0 }]}>
             <PhButton variant='14' onPress={() => setForcePhLevel(14)} />
