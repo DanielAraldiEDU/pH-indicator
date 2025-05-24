@@ -1,13 +1,10 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import { ACTIVE_OPACITY } from '@/config';
 import { PhButtonProps, PhVariant } from '@/@types';
-import { theme } from '../../styles';
 import Text from '../Text';
-import { styles } from './styles';
-
-const { colors } = theme;
+import { makeStyles } from './styles';
 
 function PhButton(props: PhButtonProps) {
   const { variant, onPress } = props;
@@ -24,14 +21,17 @@ function PhButton(props: PhButtonProps) {
   };
 
   const isHighlightText = ['13', '14'].includes(variant);
+  const textColor = isHighlightText ? 'primary' : 'background';
+
+  const styles = useMemo(() => makeStyles({ variant }), [variant]);
 
   return (
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}
       onPress={onPress}
-      style={[styles.container, { backgroundColor: colors.pH[variant] }]}
+      style={styles.container}
     >
-      <Text variant='body' color={isHighlightText ? 'primary' : 'background'}>
+      <Text variant='body' color={textColor}>
         {texts[variant]}
       </Text>
     </TouchableOpacity>

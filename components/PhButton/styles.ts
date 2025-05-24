@@ -1,16 +1,25 @@
-import { theme } from '@/styles';
 import { StyleSheet } from 'react-native';
+import { PhVariant } from '@/@types';
+import { theme } from '@/styles';
 
-const { borders, spacings } = theme;
+interface MakeStylesProps {
+  variant: PhVariant;
+}
 
-export const styles = StyleSheet.create({
-  container: {
-    width: spacings[12],
-    height: spacings[8],
+export const makeStyles = (props: MakeStylesProps) => {
+  const { variant } = props;
 
-    justifyContent: 'center',
-    alignItems: 'center',
+  return StyleSheet.create({
+    container: {
+      width: theme.spacings[12],
+      height: theme.spacings[8],
 
-    borderRadius: borders.radius.small,
-  },
-});
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      borderRadius: theme.borders.radius.small,
+
+      backgroundColor: theme.colors.pH[variant],
+    },
+  });
+};
