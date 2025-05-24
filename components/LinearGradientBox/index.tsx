@@ -87,21 +87,22 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
 
   useEffect(() => {
     if (forcePhLevel !== null) {
+      const linearGradientBoxHeight = linearGradientBoxSize.height;
       const locationsY: Record<number, number> = {
-        1: linearGradientBoxSize.height * theme.colors.pHStops[1],
-        2: linearGradientBoxSize.height * theme.colors.pHStops[2],
-        5: linearGradientBoxSize.height * theme.colors.pHStops[5],
-        7: linearGradientBoxSize.height * theme.colors.pHStops[7],
-        9: linearGradientBoxSize.height * theme.colors.pHStops[9],
-        11: linearGradientBoxSize.height * theme.colors.pHStops[11],
-        13: linearGradientBoxSize.height * theme.colors.pHStops[13],
-        14: linearGradientBoxSize.height * theme.colors.pHStops[14],
+        1: linearGradientBoxHeight * theme.colors.pHStops[1],
+        2: linearGradientBoxHeight * theme.colors.pHStops[2],
+        5: linearGradientBoxHeight * theme.colors.pHStops[5],
+        7: linearGradientBoxHeight * theme.colors.pHStops[7],
+        9: linearGradientBoxHeight * theme.colors.pHStops[9],
+        11: linearGradientBoxHeight * theme.colors.pHStops[11],
+        13: linearGradientBoxHeight * theme.colors.pHStops[13],
+        14: linearGradientBoxHeight * theme.colors.pHStops[14],
       };
 
       setPhLevel(forcePhLevel);
       setTooltipLocation({
         locationX: linearGradientBoxSize.width / 2,
-        locationY: locationsY[forcePhLevel] || linearGradientBoxSize.height / 2,
+        locationY: locationsY[forcePhLevel] || linearGradientBoxHeight / 2,
       });
       setIsTooltipVisible(true);
       onPressPhLevel?.();

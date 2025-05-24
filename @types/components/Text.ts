@@ -1,4 +1,4 @@
-import { TextProps as RNTextProps } from 'react-native';
+import { ColorValue, TextProps as RNTextProps } from 'react-native';
 
 export type TextVariant = 'heading' | 'body' | 'text';
 export type TextColor = 'primary' | 'secondary' | 'background';
@@ -17,4 +17,11 @@ export interface TextProps extends RNTextProps {
    * @default 'secondary'
    */
   color?: TextColor;
+
+  /**
+   * @description Provides custom text color.
+   *
+   * @default undefined
+   */
+  customColor?: ColorValue;
 }

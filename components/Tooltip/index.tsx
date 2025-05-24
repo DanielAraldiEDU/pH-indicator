@@ -9,7 +9,7 @@ import { makeStyles } from './styles';
 import { theme } from '@/styles';
 
 function Tooltip(props: TooltipProps) {
-  const { pH = 0, locationX = 0, locationY = 0 } = props;
+  const { pH = 0, locationX = 0, locationY = 0, textColor } = props;
 
   const [tooltipLayout, setTooltipLayout] = useState<TooltipLayoutProps>({
     width: 0,
@@ -59,9 +59,11 @@ function Tooltip(props: TooltipProps) {
       onLayout={onLayout}
     >
       <View style={styles.content}>
-        <Icon name='flask' color='primary' />
+        <Icon name='flask' color='primary' customColor={textColor} />
 
-        <Text color='primary'>{pHLabel}</Text>
+        <Text color='primary' customColor={textColor}>
+          {pHLabel}
+        </Text>
       </View>
 
       <View style={styles.triangle} />

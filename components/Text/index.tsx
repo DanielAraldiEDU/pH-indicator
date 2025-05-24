@@ -5,7 +5,13 @@ import { TextProps } from '@/@types';
 import { makeStyles } from './styles';
 
 function Text(props: TextProps) {
-  const { variant = 'body', color = 'secondary', style, ...rest } = props;
+  const {
+    variant = 'body',
+    color = 'secondary',
+    customColor,
+    style,
+    ...rest
+  } = props;
 
   const textStyles = makeStyles({ color })[variant];
 

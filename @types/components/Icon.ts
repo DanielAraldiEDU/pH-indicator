@@ -1,3 +1,5 @@
+import { ColorValue } from 'react-native';
+
 export type IconName = 'heart' | 'copyright' | 'flask';
 export type IconColor = 'primary' | 'secondary';
 export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill';
@@ -29,4 +31,11 @@ export interface IconProps {
    * @default 'regular'
    */
   size?: IconSize;
+
+  /**
+   * @description Provides custom icon color.
+   *
+   * @default undefined
+   */
+  customColor?: ColorValue;
 }

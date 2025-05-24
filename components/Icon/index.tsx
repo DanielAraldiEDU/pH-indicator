@@ -10,6 +10,7 @@ function Icon(props: IconProps) {
     color = 'secondary',
     weight = 'regular',
     size = 'regular',
+    customColor,
   } = props;
 
   const resolveColor = () => {
@@ -21,7 +22,7 @@ function Icon(props: IconProps) {
   };
 
   const commonIconProps = {
-    color: resolveColor(),
+    color: customColor || resolveColor(),
     size: theme.spacings[size === 'regular' ? 4 : '2.5'],
     weight,
   };

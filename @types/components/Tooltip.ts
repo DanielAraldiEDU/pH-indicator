@@ -1,3 +1,5 @@
+import { ColorValue } from 'react-native';
+
 import { LinearGradientBoxLocationProps } from './LinearGradientBox';
 
 export interface TooltipProps extends LinearGradientBoxLocationProps {
@@ -7,6 +9,13 @@ export interface TooltipProps extends LinearGradientBoxLocationProps {
    * @default 0
    */
   pH: number;
+
+  /**
+   * @description Provides the tooltip text color.
+   *
+   * @default '#C084FC'
+   */
+  textColor?: ColorValue;
 }
 
 export interface TooltipLayoutProps {

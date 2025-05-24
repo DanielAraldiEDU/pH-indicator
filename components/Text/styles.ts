@@ -1,35 +1,35 @@
-import { StyleSheet, TextStyle } from 'react-native';
+import { ColorValue, StyleSheet, TextStyle } from 'react-native';
 
-import { theme } from '@/styles';
 import { TextColor, TextVariant } from '@/@types';
+import { theme } from '@/styles';
 
 interface MakeStylesProps {
   color: TextColor;
+  customColor?: ColorValue;
 }
 
-const { colors, fonts } = theme;
-const fontFamily = fonts.families.rowdies.regular;
+const fontFamily = theme.fonts.families.rowdies.regular;
 
 export const makeStyles = (props: MakeStylesProps) => {
-  const { color } = props;
+  const { color, customColor } = props;
 
   return StyleSheet.create<Record<TextVariant, TextStyle>>({
     body: {
       fontFamily,
-      fontSize: fonts.sizes.body,
-      color: colors[color].main,
+      fontSize: theme.fonts.sizes.body,
+      color: customColor || theme.colors[color].main,
     },
 
     heading: {
       fontFamily,
-      fontSize: fonts.sizes.heading,
-      color: colors[color].main,
+      fontSize: theme.fonts.sizes.heading,
+      color: customColor || theme.colors[color].main,
     },
 
     text: {
       fontFamily,
-      fontSize: fonts.sizes.text,
-      color: colors[color].main,
+      fontSize: theme.fonts.sizes.text,
+      color: customColor || theme.colors[color].main,
     },
   });
 };
