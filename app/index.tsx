@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { usePh } from '@/hooks';
 import { theme } from '@/styles';
 import {
   Divider,
@@ -10,61 +11,42 @@ import {
   PhButton,
   PhButtonLine,
 } from '../components';
+import { PhVariant } from '@/@types';
 
 export default function Home() {
-  const [forcePhLevel, setForcePhLevel] = useState<number | null>(null);
   const [linearGradientHeight, setLinearGradientHeight] = useState<number>(0);
 
-  const centerPhLevels = useMemo(
-    () =>
-      [
-        {
-          value: '2',
-          top:
-            linearGradientHeight * theme.colors.pHStops[2] - theme.spacings[4],
-        },
-        {
-          value: '5',
-          top:
-            linearGradientHeight * theme.colors.pHStops[5] - theme.spacings[4],
-        },
-        {
-          value: '7',
-          top:
-            linearGradientHeight * theme.colors.pHStops[7] - theme.spacings[4],
-        },
-        {
-          value: '9',
-          top:
-            linearGradientHeight * theme.colors.pHStops[9] - theme.spacings[4],
-        },
-        {
-          value: '11',
-          top:
-            linearGradientHeight * theme.colors.pHStops[11] - theme.spacings[4],
-        },
-        {
-          value: '13',
-          top:
-            linearGradientHeight * theme.colors.pHStops[13] - theme.spacings[4],
-        },
-      ] as const,
-    [linearGradientHeight]
-  );
+  const { setPh } = usePh();
+
+  const pHLevels = useMemo(() => {
+    const spacing = theme.spacings[4];
+
+    const pHDimensions: (keyof typeof theme.dimensions.pHStops)[] = [
+      2, 5, 7, 9, 11, 13,
+    ];
+    const pHPositionsByLevel = pHDimensions.map(
+      pH => linearGradientHeight * theme.dimensions.pHStops[pH] - spacing
+    );
+
+    return pHPositionsByLevel.map((position, index) => ({
+      value: pHDimensions[index].toString() as PhVariant,
+      top: position,
+    }));
+  }, [linearGradientHeight]);
 
   const renderPhButtons = useMemo(
     () =>
-      centerPhLevels.map(({ value, top }) => (
+      pHLevels.map(({ value, top }) => (
         <View key={value} style={[styles.phButtonContent, { top }]}>
           <PhButton
             variant={value}
-            onPress={() => setForcePhLevel(Number.parseInt(value))}
+            onPress={() => setPh(Number.parseInt(value))}
           />
 
           <PhButtonLine />
         </View>
       )),
-    [centerPhLevels]
+    [pHLevels]
   );
 
   return (
@@ -76,7 +58,7 @@ export default function Home() {
       <View style={styles.content}>
         <View style={styles.phButtonsContainer}>
           <View style={[styles.phButtonContent, { top: 0 }]}>
-            <PhButton variant='1' onPress={() => setForcePhLevel(1)} />
+            <PhButton variant='1' onPress={() => setPh(1)} />
 
             <PhButtonLine />
           </View>
@@ -84,17 +66,13 @@ export default function Home() {
           {renderPhButtons}
 
           <View style={[styles.phButtonContent, { bottom: 0 }]}>
-            <PhButton variant='14' onPress={() => setForcePhLevel(14)} />
+            <PhButton variant='14' onPress={() => setPh(14)} />
 
             <PhButtonLine />
           </View>
         </View>
 
-        <LinearGradientBox
-          phLevel={forcePhLevel}
-          onPressPhLevel={() => setForcePhLevel(null)}
-          onHeightMeasured={setLinearGradientHeight}
-        />
+        <LinearGradientBox onHeightMeasured={setLinearGradientHeight} />
       </View>
 
       <Divider variant='footer' />

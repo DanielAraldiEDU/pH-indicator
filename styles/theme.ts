@@ -23,17 +23,6 @@ export const theme = {
       14: '#F5E33B',
     },
 
-    pHStops: {
-      1: 0.05,
-      2: 0.12,
-      5: 0.33,
-      7: 0.46,
-      9: 0.6,
-      11: 0.74,
-      13: 0.88,
-      14: 0.95,
-    },
-
     transparent: {
       main: 'transparent',
     },
@@ -95,6 +84,19 @@ export const theme = {
       shadowRadius: 4.65,
 
       elevation: 8,
+    },
+  },
+
+  dimensions: {
+    pHStops: {
+      1: 0.05,
+      2: 0.12,
+      5: 0.33,
+      7: 0.46,
+      9: 0.6,
+      11: 0.74,
+      13: 0.88,
+      14: 0.95,
     },
   },
 } as const;

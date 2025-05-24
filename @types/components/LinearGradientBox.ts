@@ -3,19 +3,10 @@ export type LinearGradientLocationsType = [number, number, ...number[]];
 
 export interface LinearGradientBoxProps {
   /**
-   * @description Provides to force pH level in tooltip inside the `LinearGradientBox`.
-   *
-   * @default null
-   */
-  phLevel: number | null;
-
-  /**
-   * @description Provides callback function to make actions on press pH level.
+   * @description Provides callback function to make actions on height measured.
    *
    * @default undefined
    */
-  onPressPhLevel?: () => void;
-
   onHeightMeasured?: (height: number) => void;
 }
 
