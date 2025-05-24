@@ -4,6 +4,7 @@ import { GestureResponderEvent, LayoutChangeEvent, View } from 'react-native';
 
 import { usePh } from '@/hooks';
 import { MAX_PH } from '@/config';
+import { interpolateColor, parseHexColor, parseRgbToHex } from '@/helpers';
 import {
   LinearGradientBoxSizeProps,
   LinearGradientBoxLocationProps,
@@ -26,7 +27,16 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
   const [tooltipLocation, setTooltipLocation] =
     useState<LinearGradientBoxLocationProps>({ locationX: 0, locationY: 0 });
 
-  const { ph, setPh } = usePh();
+  const { ph, phColor, setPh, setPhColor } = usePh();
+
+  const linearGradientProps = useMemo(() => {
+    const colors = Object.values(theme.colors.pH) as LinearGradientColorsType;
+    const locations = Object.values(
+      theme.dimensions.pHStops
+    ) as LinearGradientLocationsType;
+
+    return { colors, locations };
+  }, []);
 
   function onLayout(event: LayoutChangeEvent): void {
     setLinearGradientBoxSize(event.nativeEvent.layout);
@@ -40,6 +50,26 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
 
     const firstStop = linearGradientBoxHeight * 0.05;
     const lastStop = linearGradientBoxHeight * 0.95;
+    const colors = linearGradientProps.colors;
+
+    const currentColorLocationY = locationY / linearGradientBoxHeight;
+    const colorIndex = Math.floor(currentColorLocationY * (colors.length - 1));
+    const ratio = currentColorLocationY * (colors.length - 1) - colorIndex;
+
+    const firstColor = parseHexColor(colors[colorIndex]);
+    const secondColor = parseHexColor(
+      colors[Math.min(colorIndex + 1, colors.length - 1)]
+    );
+
+    if (firstColor && secondColor) {
+      const interpolatedColor = interpolateColor(
+        firstColor,
+        secondColor,
+        ratio
+      );
+      const phColor = parseRgbToHex(interpolatedColor);
+      setPhColor(phColor);
+    }
 
     if (locationY <= firstStop) {
       setTooltipLocation({
@@ -99,15 +129,6 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
     }
   }, [ph, linearGradientBoxSize]);
 
-  const linearGradientProps = useMemo(() => {
-    const colors = Object.values(theme.colors.pH) as LinearGradientColorsType;
-    const locations = Object.values(
-      theme.dimensions.pHStops
-    ) as LinearGradientLocationsType;
-
-    return { colors, locations };
-  }, []);
-
   useEffect(onForcePhLevel, [onForcePhLevel]);
 
   return (
@@ -118,7 +139,9 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
     >
       <LinearGradient style={styles.content} {...linearGradientProps} />
 
-      {isTooltipVisible && <Tooltip pH={pHLevel} {...tooltipLocation} />}
+      {isTooltipVisible && (
+        <Tooltip pH={pHLevel} textColor={phColor} {...tooltipLocation} />
+      )}
     </View>
   );
 }

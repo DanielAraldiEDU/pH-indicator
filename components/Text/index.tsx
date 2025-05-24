@@ -13,7 +13,7 @@ function Text(props: TextProps) {
     ...rest
   } = props;
 
-  const textStyles = makeStyles({ color })[variant];
+  const textStyles = makeStyles({ color, customColor })[variant];
 
   return <RNText {...rest} style={[textStyles, style]} />;
 }
