@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { usePh } from '@/hooks';
@@ -11,19 +11,25 @@ import {
   PhButton,
   PhButtonLine,
 } from '../components';
-import { PhVariant } from '@/@types';
+import { DimensionPhStop, PhMetric, PhVariant } from '@/@types';
 
 export default function Home() {
   const [linearGradientHeight, setLinearGradientHeight] = useState<number>(0);
 
-  const { setPh } = usePh();
+  const { setPh, setPhColor } = usePh();
+
+  const forcePhLevel = useCallback(
+    (metric: PhMetric) => {
+      setPh(metric);
+      setPhColor(theme.colors.pH[metric]);
+    },
+    [setPh, setPhColor]
+  );
 
   const pHLevels = useMemo(() => {
     const spacing = theme.spacings[4];
 
-    const pHDimensions: (keyof typeof theme.dimensions.pHStops)[] = [
-      2, 5, 7, 9, 11, 13,
-    ];
+    const pHDimensions: DimensionPhStop[] = [2, 5, 7, 9, 11, 13];
     const pHPositionsByLevel = pHDimensions.map(
       pH => linearGradientHeight * theme.dimensions.pHStops[pH] - spacing
     );
@@ -40,7 +46,10 @@ export default function Home() {
         <View key={value} style={[styles.phButtonContent, { top }]}>
           <PhButton
             variant={value}
-            onPress={() => setPh(Number.parseInt(value))}
+            onPress={() => {
+              const pH = Number.parseInt(value) as PhMetric;
+              forcePhLevel(pH);
+            }}
           />
 
           <PhButtonLine />
@@ -58,7 +67,7 @@ export default function Home() {
       <View style={styles.content}>
         <View style={styles.phButtonsContainer}>
           <View style={[styles.phButtonContent, { top: 0 }]}>
-            <PhButton variant='1' onPress={() => setPh(1)} />
+            <PhButton variant='1' onPress={() => forcePhLevel(1)} />
 
             <PhButtonLine />
           </View>
@@ -66,7 +75,7 @@ export default function Home() {
           {renderPhButtons}
 
           <View style={[styles.phButtonContent, { bottom: 0 }]}>
-            <PhButton variant='14' onPress={() => setPh(14)} />
+            <PhButton variant='14' onPress={() => forcePhLevel(14)} />
 
             <PhButtonLine />
           </View>
