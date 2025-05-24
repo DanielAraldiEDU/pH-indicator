@@ -16,7 +16,11 @@ import Tooltip from '../Tooltip';
 import { styles } from './styles';
 
 function LinearGradientBox(props: LinearGradientBoxProps) {
-  const { phLevel: forcePhLevel = null, onPressPhLevel, onHeightMeasured } = props;
+  const {
+    phLevel: forcePhLevel = null,
+    onPressPhLevel,
+    onHeightMeasured,
+  } = props;
 
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const [pHLevel, setPhLevel] = useState<number>(0);
@@ -34,32 +38,35 @@ function LinearGradientBox(props: LinearGradientBoxProps) {
     const lastStop = linearGradientBoxHeight * 0.95;
 
     if (locationY <= firstStop) {
-        setTooltipLocation({
-            locationX,
-            locationY: firstStop,
-        });
-        setPhLevel(1);
-        setIsTooltipVisible(true);
-        return;
+      setTooltipLocation({
+        locationX,
+        locationY: firstStop,
+      });
+      setPhLevel(1);
+      setIsTooltipVisible(true);
+      return;
     }
     if (locationY >= lastStop) {
-        setTooltipLocation({
-            locationX,
-            locationY: lastStop,
-        });
-        setPhLevel(14);
-        setIsTooltipVisible(true);
-        return;
+      setTooltipLocation({
+        locationX,
+        locationY: lastStop,
+      });
+      setPhLevel(14);
+      setIsTooltipVisible(true);
+      return;
     }
 
+    const correctLocationY = locationY - theme.spacings[1];
     const currentPhLevel = locationY
-      ? (locationY - firstStop) * (MAX_PH - 1) / (linearGradientBoxHeight * 0.9) + 1
+      ? ((locationY - firstStop) * (MAX_PH - 1)) /
+          (linearGradientBoxHeight * 0.9) +
+        1
       : 0;
 
     setPhLevel(currentPhLevel);
     setTooltipLocation({
       locationX,
-      locationY,
+      locationY: correctLocationY,
     });
     setIsTooltipVisible(true);
   }
